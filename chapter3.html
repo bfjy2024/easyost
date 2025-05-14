@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3章 线性色散分析 - Ostrovsky方程学习</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ostrovsky方程线性色散分析</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="chapter1.html">第1章 引言与预备知识</a></li>
+                <li><a href="chapter2.html">第2章 Ostrovsky方程介绍</a></li>
+                <li><a href="chapter3.html">第3章 线性色散分析</a></li>
+                <li><a href="chapter4.html">第4章 典型例子与应用</a></li>
+                <li><a href="chapter5.html">第5章 总结与展望</a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <h2>第3章：Ostrovsky 方程的线性色散分析</h2>
+            <p>在了解了 Ostrovsky 方程的背景和数学形式之后，本章将深入探讨其核心特性之一：线性色散关系。线性色散分析是理解波动方程行为的第一步，它揭示了不同波长的单色波是如何传播的，并为后续的非线性分析奠定基础。</p>
+
+            <h3>3.1 线性化方法</h3>
+            <p>Ostrovsky 方程 <code class="math-inline">(u<sub>t</sub> + c<sub>0</sub> u<sub>x</sub> + α u u<sub>x</sub> + β u<sub>xxx</sub>)<sub>x</sub> = γ u</code> 是一个非线性偏微分方程，其非线性项 <code class="math-inline">α u u<sub>x</sub></code> 使得方程的求解变得复杂。为了简化分析，我们常常首先研究其线性化版本的行为。</p>
+
+            <h4>3.1.1 为什么要进行线性化？</h4>
+            <p>线性化是一种在数学和物理中广泛应用的近似方法。对于非线性方程，线性化通常围绕一个已知的简单解（例如，零解 <code class="math-inline">u=0</code>，表示未受扰动的状态）进行，假设扰动非常小，从而可以忽略非线性项。</p>
+            <p>进行线性化的主要原因包括：</p>
+            <ol>
+                <li><strong>简化分析</strong>：线性方程比非线性方程更容易求解。许多强大的数学工具（如傅里叶变换）可以直接应用于线性方程。</li>
+                <li><strong>揭示基本波动特性</strong>：线性分析可以揭示系统固有的波动模式和色散特性。即使在非线性效应变得重要之前，这些线性特性也往往主导着波的初始演化。</li>
+                <li><strong>稳定性分析</strong>：线性化可以用来分析已知解（如平衡态）的稳定性。如果小扰动在线性化方程下增长，则原解可能是不稳定的。</li>
+                <li><strong>作为非线性分析的起点</strong>：线性解可以作为更高级的非线性分析方法（如微扰法）的出发点。</li>
+            </ol>
+            <p>对于 Ostrovsky 方程，线性化将帮助我们理解在没有强非线性相互作用的情况下，不同波长的波是如何因色散和旋转效应而传播的。</p>
+
+            <h4>3.1.2 线性化 Ostrovsky 方程的推导过程</h4>
+            <p>我们考虑 Ostrovsky 方程：</p>
+            <div class="math-formula">(u<sub>t</sub> + c<sub>0</sub> u<sub>x</sub> + α u u<sub>x</sub> + β u<sub>xxx</sub>)<sub>x</sub> = γ u</div>
+            <p>为了线性化这个方程，我们假设波的振幅 <code class="math-inline">u</code> 非常小，因此包含 <code class="math-inline">u</code> 的二次或更高次方的项（这里是 <code class="math-inline">α u u<sub>x</sub></code>）可以被忽略。这个项是 <code class="math-inline">O(u²)</code> 阶的，而其他项是 <code class="math-inline">O(u)</code> 阶的。</p>
+            <p>忽略非线性项 <code class="math-inline">α u u<sub>x</sub></code>，方程变为：</p>
+            <div class="math-formula">(u<sub>t</sub> + c<sub>0</sub> u<sub>x</sub> + β u<sub>xxx</sub>)<sub>x</sub> = γ u</div>
+            <p>展开左边的导数：</p>
+            <div class="math-formula">u<sub>tx</sub> + c<sub>0</sub> u<sub>xx</sub> + β u<sub>xxxx</sub> = γ u</div>
+            <p>这就是线性化的 Ostrovsky 方程。它是一个线性偏微分方程，描述了小振幅波在旋转和色散介质中的传播。</p>
+
+            <h3>3.2 求解线性化方程与色散关系</h3>
+            <p>为了从线性化的 Ostrovsky 方程中得到色散关系，我们通常寻找平面波解。</p>
+
+            <h4>3.2.1 假设行波解（平面波解）</h4>
+            <p>我们假设线性化方程存在形如 <code class="math-inline">u(x, t) = A e<sup>i(kx - ωt)</sup></code> 的平面波解，其中：</p>
+            <ul>
+                <li><code class="math-inline">A</code> 是波的复振幅（常数）。</li>
+                <li><code class="math-inline">k</code> 是波数，表示单位长度内的波的周期数 (<code class="math-inline">k = 2π/λ</code>，λ 是波长)。</li>
+                <li><code class="math-inline">ω</code> 是角频率，表示单位时间内的相位变化率 (<code class="math-inline">ω = 2π/P</code>，P 是周期)。</li>
+                <li><code class="math-inline">i</code> 是虚数单位 (<code class="math-inline">i² = -1</code>)。</li>
+            </ul>
+            <p>将这个解代入线性化方程 <code class="math-inline">u<sub>tx</sub> + c<sub>0</sub> u<sub>xx</sub> + β u<sub>xxxx</sub> = γ u</code>，我们需要计算 <code class="math-inline">u</code> 的各项偏导数：</p>
+            <ul>
+                <li><code class="math-inline">u<sub>t</sub> = -iω A e<sup>i(kx - ωt)</sup> = -iω u</code></li>
+                <li><code class="math-inline">u<sub>x</sub> = ik A e<sup>i(kx - ωt)</sup> = ik u</code></li>
+                <li><code class="math-inline">u<sub>xx</sub> = (ik)² u = -k² u</code></li>
+                <li><code class="math-inline">u<sub>tx</sub> = ∂/∂t (ik u) = ik u<sub>t</sub> = ik (-iω u) = kω u</code></li>
+                <li><code class="math-inline">u<sub>xxx</sub> = (ik)³ u = -ik³ u</code></li>
+                <li><code class="math-inline">u<sub>xxxx</sub> = (ik)⁴ u = k⁴ u</code></li>
+            </ul>
+            <p>将这些导数代入线性化方程：</p>
+            <div class="math-formula">kω u + c<sub>0</sub> (-k² u) + β (k⁴ u) = γ u</div>
+            <p>由于我们寻找非零解 (<code class="math-inline">u ≠ 0</code>，即 <code class="math-inline">A ≠ 0</code>)，我们可以将方程两边同时除以 <code class="math-inline">u</code>：</p>
+            <div class="math-formula">kω - c<sub>0</sub> k² + β k⁴ = γ</div>
+
+            <h4>3.2.2 推导色散关系表达式</h4>
+            <p>从上式 <code class="math-inline">kω - c<sub>0</sub> k² + β k⁴ = γ</code>，我们可以解出角频率 <code class="math-inline">ω</code> 作为波数 <code class="math-inline">k</code> 的函数，即 <code class="math-inline">ω = ω(k)</code>。这就是我们所寻求的色散关系。</p>
+            <div class="math-formula">kω = γ + c<sub>0</sub> k² - β k⁴</div>
+            <p>如果 <code class="math-inline">k ≠ 0</code>，则：</p>
+            <div class="math-formula">ω(k) = γ/k + c<sub>0</sub> k - β k³</div>
+            <p>这就是 Ostrovsky 方程的线性色散关系。它明确地给出了波的频率 <code class="math-inline">ω</code> 如何依赖于其波数 <code class="math-inline">k</code>，以及方程中的参数 <code class="math-inline">c<sub>0</sub></code>（线性相速度基准），<code class="math-inline">β</code>（短波色散系数）和 <code class="math-inline">γ</code>（旋转效应系数）。</p>
+            <p><strong>注意</strong>：</p>
+            <ul>
+                <li>如果 <code class="math-inline">k = 0</code>（对应无限长波），则原方程 <code class="math-inline">kω - c<sub>0</sub> k² + β k⁴ = γ</code> 变为 <code class="math-inline">0 = γ</code>。这意味着如果 <code class="math-inline">γ ≠ 0</code>，则 <code class="math-inline">k=0</code> 不是一个允许的波模式，除非 <code class="math-inline">ω</code> 奇异。如果 <code class="math-inline">γ = 0</code>（无旋转，退化为KdV情况的线性化版本），则 <code class="math-inline">k=0</code> 对应 <code class="math-inline">ω=0</code>，是平凡解。色散关系中的 <code class="math-inline">γ/k</code> 项表明，在 <code class="math-inline">k → 0</code> 时，旋转效应变得非常重要，可能导致频率发散，这暗示了非常长波的行为可能与KdV方程有显著不同。</li>
+                <li>这个色散关系是针对在 <code class="math-inline">u=0</code> 背景态上的小扰动而言的。</li>
+            </ul>
+
+            <h4>3.2.3 插图规划：行波解概念图</h4>
+            <p><img src="images/plane_wave_solution.png" alt="行波解概念图" class="illustration"><br>插图6: 行波解概念图。左侧：一个正弦波 u(x,t) = A cos(kx - ωt) 在某一时刻 t=0 的图像，标注波长 λ 和振幅 A。右侧：同一个波在稍后时刻 t > 0 的图像，显示波形向右传播（如果 ω/k > 0），标注相速度 v_p。下方：公式 u = A e<sup>i(kx - ωt)</sup> 并简要说明 k 和 ω 的含义。</p>
+
+            <h3>3.3 色散关系的分析 (基础部分)</h3>
+            <p>得到色散关系 <code class="math-inline">ω(k) = γ/k + c<sub>0</sub> k - β k³</code> 后，我们可以分析其特性。</p>
+
+            <h4>3.3.1 色散关系图的绘制与解读</h4>
+            <p>色散关系图通常是绘制 <code class="math-inline">ω</code> 作为 <code class="math-inline">k</code> 的函数的曲线。对于 Ostrovsky 方程，这个曲线的形状将取决于参数 <code class="math-inline">c<sub>0</sub></code>, <code class="math-inline">β</code>, 和 <code class="math-inline">γ</code> 的符号与大小。</p>
+            <p>假设 <code class="math-inline">c<sub>0</sub> > 0</code>, <code class="math-inline">β > 0</code>, <code class="math-inline">γ > 0</code>（这是物理上常见的参数选择，例如 <code class="math-inline">β</code> 对应KdV类型的正色散，<code class="math-inline">γ</code> 对应标准旋转效应）。</p>
+            <ul>
+                <li><strong><code class="math-inline">γ/k</code> 项</strong>：当 <code class="math-inline">k → 0⁺</code> (长波极限) 时，这一项趋于 <code class="math-inline">+∞</code>。当 <code class="math-inline">k → +∞</code> (短波极限) 时，这一项趋于 <code class="math-inline">0</code>。这是一个双曲线型的贡献。</li>
+                <li><strong><code class="math-inline">c<sub>0</sub> k</code> 项</strong>：这是一个线性项，表示基础的平流效应。若只有此项，则 <code class="math-inline">ω = c<sub>0</sub> k</code>，为非色散波。</li>
+                <li><strong><code class="math-inline">-β k³</code> 项</strong>：这是一个三次项，表示KdV类型的色散。对于 <code class="math-inline">β > 0</code>，这一项是负的，并且随着 <code class="math-inline">k</code> 的增加，其绝对值迅速增大，使得 <code class="math-inline">ω</code> 减小。</li>
+            </ul>
+            <p><strong>典型色散曲线的特征</strong> (假设 <code class="math-inline">c<sub>0</sub>, β, γ > 0</code>)：</p>
+            <ol>
+                <li><strong>长波行为 (<code class="math-inline">k → 0⁺</code>)</strong>：<code class="math-inline">ω(k) ≈ γ/k</code>。频率非常高，这与KdV方程的 <code class="math-inline">ω(k) ≈ c<sub>0</sub> k - β k³</code> (在 <code class="math-inline">k → 0</code> 时 <code class="math-inline">ω → 0</code>) 显著不同。这个 <code class="math-inline">γ/k</code> 的行为是旋转效应的直接体现。</li>
+                <li><strong>短波行为 (<code class="math-inline">k → +∞</code>)</strong>：<code class="math-inline">ω(k) ≈ -β k³</code>。频率趋于 <code class="math-inline">-∞</code>，这表明对于非常短的波，KdV类型的色散占主导，并且波可能向负方向高速传播（如果 <code class="math-inline">ω</code> 为负且大）。</li>
+                <li><strong>可能存在的极值</strong>：由于 <code class="math-inline">γ/k</code> 项在 <code class="math-inline">k</code> 较小时使 <code class="math-inline">ω</code> 增大，而 <code class="math-inline">-β k³</code> 项在 <code class="math-inline">k</code> 较大时使 <code class="math-inline">ω</code> 减小，<code class="math-inline">ω(k)</code> 曲线可能存在一个最大值（对于 <code class="math-inline">k>0</code>）。这意味着在某个波数范围内，群速度可能为零或改变符号。</li>
+            </ol>
+            <p><strong>解读</strong>：</p>
+            <ul>
+                <li>色散关系图的斜率 <code class="math-inline">dω/dk</code> 是群速度。</li>
+                <li>从原点到曲线上一点 <code class="math-inline">(k, ω)</code> 的连线的斜率 <code class="math-inline">ω/k</code> 是相速度。</li>
+                <li>如果 <code class="math-inline">ω(k)</code> 不是 <code class="math-inline">k</code> 的线性函数，则波是色散的。</li>
+            </ul>
+
+            <h4>3.3.2 相速度与群速度的定义与计算</h4>
+            <ul>
+                <li><strong>相速度 (Phase Velocity) <code class="math-inline">v<sub>p</sub>(k)</code></strong>：
+                    <div class="math-formula">v<sub>p</sub>(k) = ω(k)/k = (γ/k + c<sub>0</sub> k - β k³)/k = γ/k² + c<sub>0</sub> - β k²</div>
+                    相速度描述了具有特定波数 <code class="math-inline">k</code> 的单个波分量的等相位点（如波峰）的传播速度。对于 Ostrovsky 方程，相速度明显依赖于 <code class="math-inline">k</code>，因此波是色散的。
+                    <ul>
+                        <li>当 <code class="math-inline">k → 0⁺</code>，<code class="math-inline">v<sub>p</sub>(k) ≈ γ/k² → +∞</code>。</li>
+                        <li>当 <code class="math-inline">k → +∞</code>，<code class="math-inline">v<sub>p</sub>(k) ≈ -β k² → -∞</code>。</li>
+                    </ul>
+                </li>
+                <li><strong>群速度 (Group Velocity) <code class="math-inline">v<sub>g</sub>(k)</code></strong>：
+                    <div class="math-formula">v<sub>g</sub>(k) = dω(k)/dk = d/dk (γ/k + c<sub>0</sub> k - β k³)</div>
+                    <div class="math-formula">v<sub>g</sub>(k) = -γ/k² + c<sub>0</sub> - 3β k²</div>
+                    群速度描述了由一组波数相近的波组成的波包的整体（或能量）传播速度。
+                    <ul>
+                        <li>当 <code class="math-inline">k → 0⁺</code>，<code class="math-inline">v<sub>g</sub>(k) ≈ -γ/k² → -∞</code>。</li>
+                        <li>当 <code class="math-inline">k → +∞</code>，<code class="math-inline">v<sub>g</sub>(k) ≈ -3β k² → -∞</code>。</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>重要观察</strong>：</p>
+            <ul>
+                <li>相速度和群速度通常不相等，且都依赖于 <code class="math-inline">k</code>，这再次证实了 Ostrovsky 波是强色散的。</li>
+                <li>特别地，在长波极限 (<code class="math-inline">k → 0⁺</code>)，相速度和群速度都发散，且符号相反（<code class="math-inline">v<sub>p</sub> → +∞</code>, <code class="math-inline">v<sub>g</sub> → -∞</code>，假设 <code class="math-inline">γ > 0</code>）。这是 Ostrovsky 方程色散特性的一个非常显著的特点，与KdV方程（其中 <code class="math-inline">v<sub>p</sub>(0) = v<sub>g</sub>(0) = c<sub>0</sub></code>）截然不同。这种行为与所谓的“罗斯比波”（Rossby waves）的某些特性相似，罗斯比波是地球物理流体中由于科里奥利力梯度（β效应，不同于这里的系数β）产生的行星尺度波，其相速和群速也可能反向。</li>
+            </ul>
+
+            <h4>3.3.3 不同参数对色散性质的影响 (例如，旋转参数 γ)</h4>
+            <ul>
+                <li><strong>旋转参数 <code class="math-inline">γ</code></strong>：
+                    <ul>
+                        <li>如果 <code class="math-inline">γ = 0</code>（无旋转），色散关系退化为 <code class="math-inline">ω(k) = c<sub>0</sub> k - β k³</code>，这是KdV方程的线性色散关系（在移动参考系 <code class="math-inline">x' = x - c<sub>0</sub> t</code> 中，常写作 <code class="math-inline">ω'(k) = -β k³</code> 或 <code class="math-inline">ω'(k) = β k³</code> 取决于 <code class="math-inline">β</code> 的定义和坐标系）。此时，<code class="math-inline">v<sub>p</sub>(k) = c<sub>0</sub> - β k²</code>，<code class="math-inline">v<sub>g</sub>(k) = c<sub>0</sub> - 3β k²</code>。在 <code class="math-inline">k=0</code> 时，<code class="math-inline">v<sub>p</sub>(0) = v<sub>g</sub>(0) = c<sub>0</sub></code>。</li>
+                        <li>当 <code class="math-inline">γ > 0</code> 时，如上所述，它在长波区域引入了强烈的色散效应，导致 <code class="math-inline">ω/k</code> 和 <code class="math-inline">dω/dk</code> 在 <code class="math-inline">k → 0</code> 时发散。<code class="math-inline">γ</code> 值越大，这种长波色散效应越强。</li>
+                        <li>如果 <code class="math-inline">γ < 0</code>，则 <code class="math-inline">γ/k</code> 项在 <code class="math-inline">k > 0</code> 时为负。<code class="math-inline">ω(k → 0⁺) → -∞</code>。</li>
+                    </ul>
+                </li>
+                <li><strong>KdV色散系数 <code class="math-inline">β</code></strong>：
+                    <ul>
+                        <li><code class="math-inline">β</code> 控制短波色散的强度。<code class="math-inline">β</code> 越大，<code class="math-inline">-β k³</code> 项（或 <code class="math-inline">-β k²</code> 在相/群速度中）的影响越大，使得短波的色散效应更显著。</li>
+                        <li><code class="math-inline">β</code> 的符号决定了KdV型色散是“正色散”还是“负色散”。例如，在水波中，KdV方程的 <code class="math-inline">β</code> 通常为正，导致短波相速度低于长波相速度（不考虑旋转时）。</li>
+                    </ul>
+                </li>
+                <li><strong>线性相速度基准 <code class="math-inline">c<sub>0</sub></code></strong>：
+                    <ul>
+                        <li><code class="math-inline">c<sub>0</sub></code> 仅仅是对整个色散曲线在 <code class="math-inline">ω</code> 方向上的一个线性倾斜，或者说是在相速度和群速度表达式中的一个常数偏移。它不改变色散的定性行为（即 <code class="math-inline">ω(k)</code> 是否为 <code class="math-inline">k</code> 的非线性函数），但会影响所有波分量的基础传播速度。</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>3.3.4 插图规划：典型的 Ostrovsky 方程色散关系图</h4>
+            <p><img src="images/ostrovsky_dispersion_relation_plot.png" alt="典型的 Ostrovsky 方程色散关系图" class="illustration"><br>插图7: 典型的 Ostrovsky 方程色散关系图。绘制 ω(k) vs k 的曲线，选取典型的正参数 c₀, β, γ，清晰标出长短波行为及可能的极值。可对比 γ=0 的情况。</p>
+
+            <h4>3.3.5 插图规划：相速度与群速度示意图</h4>
+            <p><img src="images/vp_vg_plot.png" alt="相速度与群速度示意图" class="illustration"><br>插图8: 相速度与群速度示意图。基于与插图7相同的参数，分别绘制 v_p(k) vs k 和 v_g(k) vs k 的曲线，清晰展示其在长短波极限的行为。</p>
+
+            <h3>3.4 色散关系的分析 (进阶内容)</h3>
+
+            <h4>3.4.1 长波近似与短波近似</h4>
+            <ul>
+                <li><strong>长波近似 (<code class="math-inline">k → 0</code>)</strong>：<br>
+                    如前所述，<code class="math-inline">ω(k) ≈ γ/k + c<sub>0</sub> k</code>。<br>
+                    此时，相速度 <code class="math-inline">v<sub>p</sub>(k) ≈ γ/k² + c<sub>0</sub></code>，群速度 <code class="math-inline">v<sub>g</sub>(k) ≈ -γ/k² + c<sub>0</sub></code>。<br>
+                    在这个近似下，KdV类型的色散项 <code class="math-inline">-β k³</code> 被忽略了。这表明对于非常长的波，旋转效应 <code class="math-inline">γ/k</code> 是主导的色散机制。
+                </li>
+                <li><strong>短波近似 (<code class="math-inline">k → ∞</code>)</strong>：<br>
+                    此时，<code class="math-inline">ω(k) ≈ -β k³</code> (假设 <code class="math-inline">c<sub>0</sub> k</code> 和 <code class="math-inline">γ/k</code> 相比 <code class="math-inline">β k³</code> 可以忽略)。<br>
+                    相速度 <code class="math-inline">v<sub>p</sub>(k) ≈ -β k²</code>，群速度 <code class="math-inline">v<sub>g</sub>(k) ≈ -3β k²</code>。<br>
+                    这与KdV方程在短波极限下的行为类似（忽略 <code class="math-inline">c<sub>0</sub></code>）。表明对于非常短的波，KdV类型的色散占主导，而旋转效应 <code class="math-inline">γ/k</code> 的影响可以忽略。
+                </li>
+                <li><strong>中间波数范围</strong>：<br>
+                    在某个中间的波数范围，<code class="math-inline">γ/k</code>, <code class="math-inline">c<sub>0</sub> k</code>, 和 <code class="math-inline">-β k³</code> 三项可能同等重要，导致更复杂的色散行为，例如 <code class="math-inline">ω(k)</code> 曲线可能出现极值点（<code class="math-inline">dω/dk = 0</code> 的点）。<br>
+                    令 <code class="math-inline">v<sub>g</sub>(k) = -γ/k² + c<sub>0</sub> - 3β k² = 0</code>，可以解出群速度为零的波数 <code class="math-inline">k<sub>0</sub></code>。<br>
+                    <div class="math-formula">-γ + c<sub>0</sub> k<sub>0</sub>² - 3β k<sub>0</sub>⁴ = 0</div>
+                    这是一个关于 <code class="math-inline">k<sub>0</sub>²</code> 的二次方程：<code class="math-inline">3β (k<sub>0</sub>²)² - c<sub>0</sub> (k<sub>0</sub>²) + γ = 0</code>。<br>
+                    解得 <code class="math-inline">k<sub>0</sub>² = [c<sub>0</sub> ± sqrt(c<sub>0</sub>² - 12βγ)] / (6β)</code>。<br>
+                    为了使 <code class="math-inline">k<sub>0</sub>²</code> 有正实数解，需要判别式 <code class="math-inline">Δ = c<sub>0</sub>² - 12βγ ≥ 0</code>，并且分子也为正。<br>
+                    如果存在这样的 <code class="math-inline">k<sub>0</sub></code>，则在 <code class="math-inline">k=k<sub>0</sub></code> 处波包的传播速度为零（在实验室参考系中，如果 <code class="math-inline">c<sub>0</sub></code> 代表了某种平均流速，则是在此参考系下）。这可能导致能量的局域积累。
+                </li>
+            </ul>
+
+            <h4>3.4.2 色散效应与非线性效应的初步讨论</h4>
+            <p>虽然本章主要关注线性色散，但理解它与非线性效应的相互作用是至关重要的。</p>
+            <ul>
+                <li><strong>非线性效应 (<code class="math-inline">α u u<sub>x</sub></code>)</strong>：倾向于使波形变陡。大振幅部分传播快于小振幅部分，可能导致波前变陡峭，最终形成激波（如果没有任何机制来抗衡它）。</li>
+                <li><strong>色散效应 (<code class="math-inline">ω(k)</code> 不是 <code class="math-inline">k</code> 的线性函数)</strong>：倾向于使不同频率（波数）的波分量以不同速度传播，导致波包弥散或变形。</li>
+            </ul>
+            <p><strong>平衡</strong>：在许多非线性波动方程（如KdV）中，非线性陡峭效应和（短波）色散弥散效应可以达到一种平衡，从而形成稳定的行波解，如孤立子。孤立子在传播过程中保持其形状和速度不变。</p>
+            <p><strong>Ostrovsky 方程的特殊性</strong>：</p>
+            <ul>
+                <li>Ostrovsky 方程同时包含KdV型短波色散 (<code class="math-inline">-β k³</code> 项) 和旋转引起的非常长波色散 (<code class="math-inline">γ/k</code> 项)。</li>
+                <li>旋转引起的 <code class="math-inline">γ/k</code> 项色散非常强烈，尤其是在长波区域。这种强烈的长波色散往往会阻止KdV型孤立子的形成，因为它倾向于将能量辐射到长波中。</li>
+                <li>因此，Ostrovsky 方程的行波解（如果存在）通常不是指数衰减的KdV孤子，而可能是代数衰减的孤子、周期波，或者根本不存在稳定的局域化行波解，而是表现为辐射阻尼的准孤子。</li>
+                <li>线性色散关系中 <code class="math-inline">ω(k → 0) → ∞</code> 的特性暗示了能量向长波的有效转移。</li>
+            </ul>
+            <p>对非线性效应的更深入分析超出了本章线性分析的范围，但线性色散关系为理解这些复杂行为提供了基础。</p>
+
+            <h4>3.4.3 特殊情况下的色散特性 (例如，无旋转情况退化为 KdV)</h4>
+            <ul>
+                <li><strong>无旋转 (<code class="math-inline">γ = 0</code>)</strong>：
+                    <div class="math-formula">ω(k) = c<sub>0</sub> k - β k³</div>
+                    <div class="math-formula">v<sub>p</sub>(k) = c<sub>0</sub> - β k²</div>
+                    <div class="math-formula">v<sub>g</sub>(k) = c<sub>0</sub> - 3β k²</div>
+                    这是标准的KdV色散关系（在实验室参考系）。如果 <code class="math-inline">β > 0</code>，则短波（大k）的相速度和群速度都小于长波（小k）的速度（相对于 <code class="math-inline">c<sub>0</sub></code>）。这种色散允许KdV孤子的存在。
+                </li>
+                <li><strong>无KdV型色散 (<code class="math-inline">β = 0</code>)</strong>：
+                    <div class="math-formula">ω(k) = γ/k + c<sub>0</sub> k</div>
+                    <div class="math-formula">v<sub>p</sub>(k) = γ/k² + c<sub>0</sub></div>
+                    <div class="math-formula">v<sub>g</sub>(k) = -γ/k² + c<sub>0</sub></div>
+                    这种情况下，色散完全由旋转项 <code class="math-inline">γ/k</code> 主导。这种方程有时被称为“旋转KdV方程”的简化形式或“Ostrovsky-Hunter方程”的线性部分。它仍然是强色散的，尤其是在长波区域。
+                </li>
+                <li><strong>无平流 (<code class="math-inline">c<sub>0</sub> = 0</code>)</strong>：
+                    <div class="math-formula">ω(k) = γ/k - β k³</div>
+                    这只是将整个色散曲线在 <code class="math-inline">ω</code> 方向上下平移，不改变色散的定性特征，但会改变所有波的传播方向和速度。
+                </li>
+            </ul>
+
+            <h4>3.4.4 插图规划：长波/短波近似下的波形示意图</h4>
+            <p><img src="images/wave_approximation_sketch.png" alt="长波/短波近似下的波形示意图" class="illustration"><br>插图9: 长波/短波近似下的波形示意图。一个概念性的示意图，展示不同波长极限下的波的特征，如长波受旋转主导，短波受KdV色散主导。</p>
+
+        </div>
+        <footer>
+            <p>&copy; 2025 Ostrovsky方程学习教程</p>
+        </footer>
+    </div>
+</body>
+</html>

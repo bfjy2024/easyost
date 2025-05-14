@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4章 典型例子与应用 - Ostrovsky方程学习</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ostrovsky方程线性色散分析</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="chapter1.html">第1章 引言与预备知识</a></li>
+                <li><a href="chapter2.html">第2章 Ostrovsky方程介绍</a></li>
+                <li><a href="chapter3.html">第3章 线性色散分析</a></li>
+                <li><a href="chapter4.html">第4章 典型例子与应用</a></li>
+                <li><a href="chapter5.html">第5章 总结与展望</a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <h2>第4章：典型例子与应用</h2>
+            <p>在第三章中，我们详细推导并分析了 Ostrovsky 方程的线性色散关系 <code class="math-inline">ω(k) = γ/k + c<sub>0</sub> k - β k³</code>，以及相关的相速度 <code class="math-inline">v<sub>p</sub>(k) = γ/k² + c<sub>0</sub> - β k²</code> 和群速度 <code class="math-inline">v<sub>g</sub>(k) = -γ/k² + c<sub>0</sub> - 3β k²</code>。本章将通过一些具体的例子来应用这些理论结果，帮助读者更直观地理解 Ostrovsky 方程描述的波的色散特性及其在物理情境中的意义。</p>
+
+            <h3>4.1 示例1：特定参数下的色散曲线分析</h3>
+            <p>让我们考虑一组具体的参数，并分析其对应的色散曲线、相速度和群速度。</p>
+
+            <h4>4.1.1 问题描述与参数设定</h4>
+            <p>假设我们研究一个物理系统，其小振幅波动的线性演化由 Ostrovsky 方程描述。通过对系统物理特性的测量或理论推导，我们得到以下无量纲化的参数值：</p>
+            <ul>
+                <li>线性平流速度 <code class="math-inline">c<sub>0</sub> = 1</code></li>
+                <li>KdV型色散系数 <code class="math-inline">β = 0.1</code></li>
+                <li>旋转效应系数 <code class="math-inline">γ = 0.5</code></li>
+            </ul>
+            <p>我们的目标是：</p>
+            <ol>
+                <li>绘制此参数设置下的色散关系 <code class="math-inline">ω(k)</code> 曲线。</li>
+                <li>绘制对应的相速度 <code class="math-inline">v<sub>p</sub>(k)</code> 和群速度 <code class="math-inline">v<sub>g</sub>(k)</code> 曲线。</li>
+                <li>分析这些曲线的特征，并讨论其物理含义，特别是与无旋转情况 (KdV) 的对比。</li>
+                <li>找出是否存在群速度为零的波数。</li>
+            </ol>
+
+            <h4>4.1.2 色散曲线绘制与特征分析</h4>
+            <p>根据给定的参数，我们有：</p>
+            <ul>
+                <li><code class="math-inline">ω(k) = 0.5/k + k - 0.1 k³</code></li>
+                <li><code class="math-inline">v<sub>p</sub>(k) = 0.5/k² + 1 - 0.1 k²</code></li>
+                <li><code class="math-inline">v<sub>g</sub>(k) = -0.5/k² + 1 - 0.3 k²</code></li>
+            </ul>
+            <p>我们将绘制这些函数在 <code class="math-inline">k > 0</code> 区间的图像。</p>
+            <p><strong><code class="math-inline">ω(k)</code> 曲线特征分析：</strong></p>
+            <ul>
+                <li><strong>长波极限 (<code class="math-inline">k → 0⁺</code>)</strong>：<code class="math-inline">ω(k) ≈ 0.5/k → +∞</code>。频率随着波数趋于零而急剧增加，这是旋转效应 <code class="math-inline">γ</code> 主导的结果。</li>
+                <li><strong>短波极限 (<code class="math-inline">k → +∞</code>)</strong>：<code class="math-inline">ω(k) ≈ -0.1 k³ → -∞</code>。频率随着波数增加而迅速变为大的负值，这是KdV型色散 <code class="math-inline">β</code> 主导的结果。</li>
+                <li><strong>中间行为</strong>：由于长波时 <code class="math-inline">ω</code> 很大，短波时 <code class="math-inline">ω</code> 为大的负值，且函数连续，<code class="math-inline">ω(k)</code> 曲线必然从 <code class="math-inline">+∞</code> 下降到 <code class="math-inline">-∞</code>。它可能存在局部极值。通过观察 <code class="math-inline">v<sub>g</sub>(k) = dω/dk</code> 的零点可以找到 <code class="math-inline">ω(k)</code> 的极值点。</li>
+            </ul>
+            <p><strong><code class="math-inline">v<sub>p</sub>(k)</code> 曲线特征分析：</strong></p>
+            <ul>
+                <li><strong>长波极限 (<code class="math-inline">k → 0⁺</code>)</strong>：<code class="math-inline">v<sub>p</sub>(k) ≈ 0.5/k² → +∞</code>。</li>
+                <li><strong>短波极限 (<code class="math-inline">k → +∞</code>)</strong>：<code class="math-inline">v<sub>p</sub>(k) ≈ -0.1 k² → -∞</code>。</li>
+                <li>相速度从 <code class="math-inline">+∞</code> 单调递减到 <code class="math-inline">-∞</code>，中间会经过零点。令 <code class="math-inline">v<sub>p</sub>(k) = 0</code>：
+                    <div class="math-formula">0.5/k² + 1 - 0.1 k² = 0</div>
+                    <div class="math-formula">0.5 + k² - 0.1 k⁴ = 0</div>
+                    <div class="math-formula">0.1 k⁴ - k² - 0.5 = 0</div>
+                    解关于 <code class="math-inline">k²</code> 的二次方程：<code class="math-inline">k² = [1 ± sqrt(1 - 4*0.1*(-0.5))] / (2*0.1) = [1 ± sqrt(1 + 0.2)] / 0.2 = [1 ± sqrt(1.2)] / 0.2</code>。<br>
+                    由于 <code class="math-inline">k²</code> 必须为正，取正根：<code class="math-inline">k² = (1 + sqrt(1.2)) / 0.2 ≈ (1 + 1.095) / 0.2 ≈ 2.095 / 0.2 ≈ 10.476</code>。<br>
+                    所以 <code class="math-inline">k<sub>vp0</sub> ≈ sqrt(10.476) ≈ 3.237</code>。在此波数，相速度为零。
+                </li>
+            </ul>
+            <p><strong><code class="math-inline">v<sub>g</sub>(k)</code> 曲线特征分析：</strong></p>
+            <ul>
+                <li><strong>长波极限 (<code class="math-inline">k → 0⁺</code>)</strong>：<code class="math-inline">v<sub>g</sub>(k) ≈ -0.5/k² → -∞</code>。</li>
+                <li><strong>短波极限 (<code class="math-inline">k → +∞</code>)</strong>：<code class="math-inline">v<sub>g</sub>(k) ≈ -0.3 k² → -∞</code>。</li>
+                <li>群速度从 <code class="math-inline">-∞</code> 开始增加，可能达到一个最大值，然后再次减小到 <code class="math-inline">-∞</code>。这意味着 <code class="math-inline">ω(k)</code> 曲线的斜率先从一个大的负值增加（斜率变缓），可能变为正，然后再减小为负值且越来越陡。</li>
+                <li><strong>寻找群速度为零的波数 <code class="math-inline">k<sub>vg0</sub></code></strong>：令 <code class="math-inline">v<sub>g</sub>(k) = 0</code>：
+                    <div class="math-formula">-0.5/k² + 1 - 0.3 k² = 0</div>
+                    <div class="math-formula">-0.5 + k² - 0.3 k⁴ = 0</div>
+                    <div class="math-formula">0.3 k⁴ - k² + 0.5 = 0</div>
+                    解关于 <code class="math-inline">k²</code> 的二次方程。判别式 <code class="math-inline">Δ = (-1)² - 4 * 0.3 * 0.5 = 1 - 0.6 = 0.4 > 0</code>。<br>
+                    <code class="math-inline">k² = [1 ± sqrt(0.4)] / (2*0.3) = [1 ± sqrt(0.4)] / 0.6</code>。<br>
+                    <code class="math-inline">sqrt(0.4) ≈ 0.632</code>。<br>
+                    <code class="math-inline">k<sub>1</sub>² = (1 + 0.632) / 0.6 ≈ 1.632 / 0.6 ≈ 2.72</code>  => <code class="math-inline">k<sub>1</sub> ≈ sqrt(2.72) ≈ 1.649</code>。<br>
+                    <code class="math-inline">k<sub>2</sub>² = (1 - 0.632) / 0.6 ≈ 0.368 / 0.6 ≈ 0.613</code>  => <code class="math-inline">k<sub>2</sub> ≈ sqrt(0.613) ≈ 0.783</code>。<br>
+                    在这两个波数 <code class="math-inline">k<sub>1</sub></code> 和 <code class="math-inline">k<sub>2</sub></code> 处，群速度为零。这意味着在这些波数附近，波包的能量传播非常缓慢，甚至可能停滞（在实验室参考系中）。这对应于 <code class="math-inline">ω(k)</code> 曲线上的局部最大值和局部最小值。
+                    根据分析，<code class="math-inline">ω(k<sub>2</sub> ≈ 0.783)</code> 处为局部最大值，<code class="math-inline">ω(k<sub>1</sub> ≈ 1.649)</code> 处为局部最小值。
+                </li>
+            </ul>
+
+            <h4>4.1.3 物理含义解读</h4>
+            <ol>
+                <li><strong>旋转效应的主导性</strong>：在长波区域 (<code class="math-inline">k</code> 较小)，<code class="math-inline">γ/k</code> 项使得频率非常高，相速度和群速度的绝对值也很大，且群速度为负。这与无旋转的KdV情况（<code class="math-inline">ω(0)=0, v<sub>p</sub>(0)=v<sub>g</sub>(0)=c<sub>0</sub></code>）形成鲜明对比。这意味着非常长的波受到旋转的强烈影响，其传播特性与经典KdV波完全不同。</li>
+                <li><strong>KdV型色散的主导性</strong>：在短波区域 (<code class="math-inline">k</code> 较大)，<code class="math-inline">-βk³</code> 项主导，频率、相速度和群速度都趋于大的负值。这类似于KdV方程的行为，表明短波主要受KdV型色散控制。</li>
+                <li><strong>群速度为零与能量局域化</strong>：在 <code class="math-inline">k<sub>1</sub> ≈ 1.649</code> 和 <code class="math-inline">k<sub>2</sub> ≈ 0.783</code> 这两个波数处，群速度为零。这意味着相应波长的波包在实验室参考系中不传播能量（或传播极慢）。这种情况可能导致波能量在这些特定波数附近积累，形成所谓的“驻波包”或“陷波模式”。这在实际物理系统中可能导致能量的集中和特定波长的选择性放大。</li>
+                <li><strong>相速度与群速度的差异</strong>：在整个波数范围内，<code class="math-inline">v<sub>p</sub>(k)</code> 和 <code class="math-inline">v<sub>g</sub>(k)</code> 通常不相等，表明波是强色散的。波包在传播过程中会发生变形和展宽。</li>
+                <li><strong>与无旋转情况对比</strong>：如果 <code class="math-inline">γ=0</code>，则 <code class="math-inline">ω(k) = k - 0.1k³</code>。此时 <code class="math-inline">ω(0)=0</code>，<code class="math-inline">v<sub>g</sub>(0)=1</code>。<code class="math-inline">v<sub>g</sub>(k) = 1 - 0.3k²</code>，只有一个零点 <code class="math-inline">k = sqrt(1/0.3) ≈ 1.826</code>。旋转项 <code class="math-inline">γ</code> 的引入，极大地改变了长波的行为，并可能引入多个群速度为零的波数。</li>
+            </ol>
+
+            <h4>4.1.4 插图规划：示例1的色散曲线图</h4>
+            <p><img src="images/example1_dispersion_curves.png" alt="示例1的色散曲线图" class="illustration"><br>插图10: 示例1的色散曲线图。包含ω(k), v_p(k), v_g(k) vs k 的子图，清晰标注长短波行为、极值点、零点等，并可对比γ=0的情况。</p>
+
+            <h3>4.2 示例2：Ostrovsky 方程描述的物理现象中的色散特性</h3>
+            <p>考虑一个更具体的物理情境：海洋中的大尺度内部波，受到地球自转的影响。</p>
+
+            <h4>4.2.1 具体物理背景介绍 (如海洋内波)</h4>
+            <p>海洋通常具有稳定的密度分层，即密度随深度增加。在这些密度梯度显著的区域（如温跃层、盐跃层），可以存在内部波。内部波与我们熟悉的水面波不同，它们在流体内部传播，其恢复力主要来自重力和浮力。内部波的振幅可以非常大（数十甚至上百米），波长可达数十公里，周期从几分钟到几小时甚至更长。</p>
+            <p>对于大尺度的海洋内部波（波长远大于水深），地球的自转（科里奥利效应）变得非常重要。Ostrovsky 方程正是在这种背景下被提出来描述这类受旋转影响的弱非线性长内部波的演化。</p>
+            <p>在这种情况下，方程中的参数 <code class="math-inline">c<sub>0</sub>, α, β, γ</code> 可以通过海洋的典型参数（如Brunt-Väisälä频率（浮力频率）、水深、旋转频率（科里奥利参数f）、非线性参数等）导出。</p>
+            <ul>
+                <li><code class="math-inline">c<sub>0</sub></code> 通常与线性长内部波的模态速度有关。</li>
+                <li><code class="math-inline">α</code> 与非线性效应强度有关，取决于波幅与水深的比以及密度分层结构。</li>
+                <li><code class="math-inline">β</code> 与短波色散有关，取决于水深和分层结构。</li>
+                <li><code class="math-inline">γ</code> 与科里奥利参数 <code class="math-inline">f</code> (等于 <code class="math-inline">2Ωsin(latitude)</code>，Ω是地球自转角速度) 直接相关，通常 <code class="math-inline">γ</code> 正比于 <code class="math-inline">f²</code> 或某个与 <code class="math-inline">f</code> 相关的量。</li>
+            </ul>
+
+            <h4>4.2.2 如何应用线性色散分析</h4>
+            <p>假设我们通过海洋观测或模型得到了适用于特定海域内部波的 Ostrovsky 方程参数。例如，某海域的参数可能导致 <code class="math-inline">γ</code> 值相对较大，而 <code class="math-inline">β</code> 值相对较小。</p>
+            <ol>
+                <li><strong>计算色散关系</strong>：代入具体的 <code class="math-inline">c<sub>0</sub>, β, γ</code> 值，得到该海域内部波的线性色散关系 <code class="math-inline">ω(k)</code>。</li>
+                <li><strong>分析主导效应</strong>：
+                    <ul>
+                        <li><strong>长波（小 <code class="math-inline">k</code>）</strong>：由于 <code class="math-inline">γ</code> 通常不为零（地球在旋转），<code class="math-inline">γ/k</code> 项将主导长波的色散。这意味着非常长的内部波（如潮汐引起的内潮，或大尺度内孤立波的尾波）其频率和传播特性将显著受到地球自转的影响。它们的群速度可能与相速度方向相反，或者群速度非常小。</li>
+                        <li><strong>短波（大 <code class="math-inline">k</code>）</strong>：如果 <code class="math-inline">β</code> 不为零，<code class="math-inline">-βk³</code> 项将主导。这对应于尺度相对较小的内部波，其行为更接近KdV型色散。</li>
+                    </ul>
+                </li>
+                <li><strong>预测波包演化</strong>：
+                    <ul>
+                        <li>一个初始局域化的内部波扰动（例如由风暴或地形相互作用产生）可以看作是不同波数成分的叠加。根据群速度 <code class="math-inline">v<sub>g</sub>(k)</code>，我们可以预测不同波数的能量将如何传播。</li>
+                        <li>如果存在 <code class="math-inline">v<sub>g</sub>(k) = 0</code> 的波数，那么这些波长的能量可能会在源区附近被“困住”或传播非常缓慢，形成能量集中的区域。</li>
+                        <li>如果 <code class="math-inline">v<sub>g</sub>(k)</code> 在某个波数范围变化剧烈，则对应波长的波包会迅速弥散。</li>
+                    </ul>
+                </li>
+                <li><strong>与观测对比</strong>：
+                    <ul>
+                        <li>通过卫星遥感或现场测量（如锚系温盐链）可以观测到海洋内部波的波长、周期和传播速度。将这些观测数据与从色散关系计算得到的理论值（如 <code class="math-inline">λ = 2π/k</code>, <code class="math-inline">P = 2π/ω(k)</code>, <code class="math-inline">v<sub>p</sub> = ω(k)/k</code>）进行比较，可以检验 Ostrovsky 方程模型及所选参数的适用性。</li>
+                        <li>例如，如果观测到某些特定波长的内部波能量异常集中，可能与理论预测的 <code class="math-inline">v<sub>g</sub>(k) ≈ 0</code> 的区域相对应。</li>
+                    </ul>
+                </li>
+                <li><strong>理解能量传播路径</strong>：
+                    <ul>
+                        <li>在二维情况下（Ostrovsky方程通常是一维的，但其思想可以推广），群速度的方向决定了波能的传播方向。对于罗斯比型波动（Ostrovsky方程的旋转项有类似效应），相速度和群速度方向可能存在很大差异，这对于理解能量如何从源区输运到远场至关重要。</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>例子</strong>：假设在某中纬度海域，<code class="math-inline">γ</code> 较大，<code class="math-inline">β</code> 较小。这意味着旋转效应对长波非常显著。如果一个宽广的扰动产生，其长波成分的群速度可能很小甚至为负（相对于 <code class="math-inline">c<sub>0</sub></code>），导致能量向西传播（在北半球，罗斯比波通常具有向西的群速度分量）或者在原地振荡。而其短波成分可能仍表现出KdV型的弥散。</p>
+
+            <h4>4.2.3 插图规划：海洋内波中的色散现象示意图</h4>
+            <p><img src="images/internal_wave_dispersion_ocean.png" alt="海洋内波中的色散现象示意图" class="illustration"><br>插图11: 海洋内波中的色散现象示意图。概念性展示海洋密度分层、地球自转背景下，初始波包如何因Ostrovsky方程描述的色散效应（长波受旋转主导，短波受KdV色散主导）而演化。</p>
+
+        </div>
+        <footer>
+            <p>&copy; 2025 Ostrovsky方程学习教程</p>
+        </footer>
+    </div>
+</body>
+</html>
